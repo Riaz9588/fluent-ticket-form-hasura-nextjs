@@ -17,6 +17,12 @@ const TicketForm = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubCategory, setSelectedSubCategory] = useState('');
 
+    const [last4DigitCustomerID, setLast4DigitCustomerID] = useState('');
+    const [selectedTicketOwner, setSelectedTicketOwner] = useState('');
+    const [selectedShareWith, setSelectedShareWith] = useState('');
+
+
+
     const response: any = fetchApi({
         query: `
             query MyQuery {
@@ -73,6 +79,19 @@ const TicketForm = () => {
             </option>
         ));
 
+    const ticketOwners = [
+        <option>T-A</option>,
+        <option>T-B</option>,
+        <option>T-C</option>
+    ]
+
+
+    const shareWith = [
+        <option>S-A</option>,
+        <option>S-B</option>,
+        <option>S-C</option>
+    ]
+
     const handleTicketTypeChange = e => {
         setSelectedTicketType(e.target.value);
         setSelectedCategory('');
@@ -86,6 +105,14 @@ const TicketForm = () => {
 
     const handleSubCategoryChange = e => {
         setSelectedSubCategory(e.target.value);
+    };
+
+    const handleTicketOwnerChange = e => {
+        setSelectedTicketOwner(e.target.value);
+    };
+
+    const handleShareWithChange = e => {
+        setSelectedShareWith(e.target.value);
     };
 
     const createTicketHandler = (e) => {
@@ -164,6 +191,38 @@ const TicketForm = () => {
                         </select>
                     </div>
                 }
+
+                <div className="w-1/2">
+                    <label htmlFor="customerID" className="block text-gray-700 text-sm font-bold mb-2">Last 4 digit of customer ID</label>
+                    <input className='w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-b' onChange={e => setLast4DigitCustomerID(e.target.value)} value={last4DigitCustomerID} id="customerID" type="text" />
+                </div>
+
+
+                <div className="w-1/2">
+                    <label htmlFor="ticketOwner" className="block text-gray-700 text-sm font-bold mb-2">Ticket Owner</label>
+                    <select
+                        id="ticketOwner"
+                        value={selectedTicketOwner}
+                        onChange={handleTicketOwnerChange}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                    >
+                        <option value="">Select Ticket Owner</option>
+                        {ticketOwners}
+                    </select>
+                </div>
+
+                <div className="w-1/2">
+                    <label htmlFor="shareWith" className="block text-gray-700 text-sm font-bold mb-2">Share With</label>
+                    <select
+                        id="shareWith"
+                        value={selectedShareWith}
+                        onChange={handleShareWithChange}
+                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                    >
+                        <option value="">Select Share With</option>
+                        {shareWith}
+                    </select>
+                </div>
 
                 <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">Create Ticket</button>
             </form>

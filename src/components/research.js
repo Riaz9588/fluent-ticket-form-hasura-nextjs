@@ -1443,8 +1443,6 @@ let surveyJSON = {
     "widthMode": "responsive"
 }
 
-
-
 let ticketType, category, subCategory;
 
 if (ticketType === "Complaints") {
@@ -1512,3 +1510,12 @@ if (ticketType === "Complaints") {
 } else if (ticketType === "Suggestions") {
 
 }
+
+
+
+
+Please check this and suggest me what should I do.
+
+    docs: https://docs.google.com/document/d/1gF1UwDo2Vz9rFy4x5VjbETAT6qJsf-mPCyK-yckgyEc/edit?usp=sharing
+
+https://altteamtalk.slack.com/archives/C047ETEFT5J/p1694875525030699?thread_ts=1694836063.214839&cid=C047ETEFT5J
